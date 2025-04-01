@@ -34,7 +34,6 @@
             background: rgba(234,88,12,0.2);
         }
         .mobile-menu {
-            display: none;
             position: absolute;
             top: 100%;
             left: 0;
@@ -43,11 +42,36 @@
             padding: 1rem;
             z-index: 1000;
             border-bottom: 3px solid #ea580c;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.3s ease-out;
+            pointer-events: none;
+            display: block !important;
         }
 
+        .mobile-menu.visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
         .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .mobile-menu a {
             display: block;
-            animation: slideDown 0.3s ease-out;
+            padding: 0.75rem;
+            color: #ea580c;
+            font-weight: 600;
+            text-align: center;
+        }
+        .mobile-menu a:hover {
+            color: #fff;
+            background: rgba(234, 88, 12, 0.2);
+        }
+        .mobile-nav-container {
+            position: relative;
         }
         #slideshow {
             position: relative;
@@ -100,6 +124,21 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
             }
         }
     </style>
@@ -260,23 +299,30 @@
     // Mobile Menu Toggle (Add this right before closing </body>)
     document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuButton = document.querySelector('button.md\\:hidden'); // Corrected selector
+        const header = document.querySelector('header');
+
+        const mobileNavContainer = document.createElement('div');
+        mobileNavContainer.className = 'mobile-nav-container';
+
         const mobileMenu = document.createElement('div');
         mobileMenu.className = 'mobile-menu';
-
         // Create mobile menu structure
         mobileMenu.innerHTML = `
-        <a href="#" class="nav-button-mobile">Projects</a>
-        <a href="#" class="nav-button-mobile">Services</a>
-        <a href="#" class="nav-button-mobile">About</a>
-    `;
+            <ul class="flex flex-col items-center space-y-4">
+                <li><a href="#" class="text-orange-500 hover:text-orange-400 text-lg">Projects</a></li>
+                <li><a href="#" class="text-orange-500 hover:text-orange-400 text-lg">Services</a></li>
+                <li><a href="#" class="text-orange-500 hover:text-orange-400 text-lg">About</a></li>
+            </ul>
+        `;
 
         // Insert mobile menu after header
-        document.querySelector('header').appendChild(mobileMenu);
+        mobileNavContainer.appendChild(mobileMenu);
+        header.appendChild(mobileNavContainer);
 
         // Toggle functionality
         mobileMenuButton.addEventListener('click', (e) => {
             e.stopPropagation();
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
         });
 
         // Close menu when clicking outside
@@ -284,6 +330,12 @@
             if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
                 mobileMenu.classList.remove('active');
             }
+        });
+        // Close menu when clicking links
+        mobileMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
         });
     });
 </script>
