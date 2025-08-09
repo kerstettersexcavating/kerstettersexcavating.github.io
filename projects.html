@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerstetter's Land Clearing & Excavation</title>
@@ -111,6 +112,133 @@
             object-fit: contain;
         }
 
+        .project-tile {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .project-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(234, 88, 12, 0.2);
+        }
+
+        .project-slideshow {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .project-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-slide.active {
+            opacity: 1;
+        }
+
+        .project-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        .project-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-dot.active {
+            background: #ea580c;
+            transform: scale(1.2);
+        }
+
+        .project-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-nav-btn.prev {
+            left: 10px;
+        }
+
+        .project-nav-btn.next {
+            right: 10px;
+        }
+
+        .project-slideshow:hover .project-nav-btn {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 20px;
+            background: white;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-tag {
+            display: inline-block;
+            background: #ffedd5;
+            color: #ea580c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-tile {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .tile-delay-1 { animation-delay: 0.1s; }
+        .tile-delay-2 { animation-delay: 0.2s; }
+        .tile-delay-3 { animation-delay: 0.3s; }
+        .tile-delay-4 { animation-delay: 0.4s; }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -166,8 +294,125 @@
 
 <!-- Projects Page Content -->
 <main class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold text-center mb-8">Our Projects</h1>
-    <!-- Add project-specific content here -->
+    <h1 class="text-4xl font-bold text-center mb-12 text-orange-600">Our Projects</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="project-tile animate-tile tile-delay-1">
+            <div class="project-slideshow">
+                <!-- Slideshow Images -->
+                <div class="project-slide active" style="background-image: url('assets/project1-1.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project1-2.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project1-3.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project1-4.jpg');"></div>
+
+                <!-- Navigation Arrows -->
+                <button class="project-nav-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="project-nav-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Navigation Dots -->
+                <div class="project-nav">
+                    <span class="project-dot active"></span>
+                    <span class="project-dot"></span>
+                    <span class="project-dot"></span>
+                    <span class="project-dot"></span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h3 class="text-xl font-bold mb-2">Field Line Trimming</h3>
+                <p class="text-gray-600 mb-4">Trimmed overhanging limbs and branches to clean up a field line</p>
+                <div>
+                    <span class="service-tag">Trimming</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-tile animate-tile tile-delay-1">
+            <div class="project-slideshow">
+                <!-- Slideshow Images -->
+                <div class="project-slide active" style="background-image: url('assets/project2-1.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project2-3.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project2-4.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project2-5.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project2-6.jpg');"></div>
+
+
+                <!-- Navigation Arrows -->
+                <button class="project-nav-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="project-nav-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Navigation Dots -->
+                <div class="project-nav">
+                    <span class="project-dot active"></span>
+                    <span class="project-dot"></span>
+                    <span class="project-dot"></span>
+                    <span class="project-dot"></span>
+                    <span class="project-dot"></span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h3 class="text-xl font-bold mb-2">Driveway Leveling</h3>
+                <p class="text-gray-600 mb-4">Graded and leveled a stone driveway and added stone around the house</p>
+                <div>
+                    <span class="service-tag">Grading</span>
+                    <span class="service-tag">Stone</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-tile animate-tile tile-delay-1">
+            <div class="project-slideshow">
+                <!-- Slideshow Images -->
+                <div class="project-slide active" style="background-image: url('assets/project3-1.jpg');"></div>
+                <div class="project-slide" style="background-image: url('assets/project3-2.jpg');"></div>
+
+                <!-- Navigation Arrows -->
+                <button class="project-nav-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="project-nav-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Navigation Dots -->
+                <div class="project-nav">
+                    <span class="project-dot active"></span>
+                    <span class="project-dot"></span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h3 class="text-xl font-bold mb-2">Lay Drainage Piping</h3>
+                <p class="text-gray-600 mb-4">Excavated and laid drainage piping</p>
+                <div>
+                    <span class="service-tag">Excavating</span>
+                    <span class="service-tag">Piping</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-16 text-center">
+        <h2 class="text-2xl font-bold mb-6">Client Testimonials</h2>
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500 mb-6">
+                <p class="italic">"Nathan does excellent work. Removed a lot of stumps and leveled it out and made me a really nice yard. A few weeks later and I'm mowing my new front yard! Totally transformed my property and went above and beyond. Highly recommend him. 5 stars from me!"</p>
+                <p class="mt-4 font-semibold">- Brandon Horst</p>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer class="bg-black text-white py-8">
@@ -201,51 +446,107 @@
     </div>
 </footer>
 <script>
-    // Mobile Menu Toggle (Add this right before closing </body>)
+    // Update mobile menu creation in all pages
     document.addEventListener('DOMContentLoaded', () => {
-        const mobileMenuButton = document.querySelector('button.md\\:hidden'); // Corrected selector
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
         const header = document.querySelector('header');
 
-        const mobileNavContainer = document.createElement('div');
-        mobileNavContainer.className = 'mobile-nav-container';
+        // Create mobile menu only once
+        if (!document.querySelector('.mobile-menu')) {
+            const mobileNavContainer = document.createElement('div');
+            mobileNavContainer.className = 'mobile-nav-container';
 
-        const mobileMenu = document.createElement('div');
-        mobileMenu.className = 'mobile-menu';
-        // Create mobile menu structure
-        mobileMenu.innerHTML = `
-            <ul class="flex flex-col items-center space-y-4">
-                <li><a href="projects.html" class="text-orange-500 hover:text-orange-400 text-lg">Projects</a></li>
-                <li><a href="services.html" class="text-orange-500 hover:text-orange-400 text-lg">Services</a></li>
-                <li><a href="about.html" class="text-orange-500 hover:text-orange-400 text-lg">About</a></li>
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'mobile-menu';
+            mobileMenu.innerHTML = `
+            <ul class="flex flex-col items-center space-y-4 py-4">
+                <li><a href="index.html" class="nav-button-mobile">Home</a></li>
+                <li><a href="projects.html" class="nav-button-mobile">Projects</a></li>
+                <li><a href="services.html" class="nav-button-mobile">Services</a></li>
+                <li><a href="about.html" class="nav-button-mobile">About</a></li>
             </ul>
         `;
 
-        // Insert mobile menu after header
-        mobileNavContainer.appendChild(mobileMenu);
-        header.appendChild(mobileNavContainer);
+            mobileNavContainer.appendChild(mobileMenu);
+            header.appendChild(mobileNavContainer);
+        }
 
         // Toggle functionality
         mobileMenuButton.addEventListener('click', (e) => {
             e.stopPropagation();
-            mobileMenu.classList.toggle('active');
+            document.querySelector('.mobile-menu').classList.toggle('active');
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
                 mobileMenu.classList.remove('active');
             }
         });
-        // Close menu when clicking links
-        mobileMenu.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
+    });
+</script>
+
+<script>
+    // Initialize project slideshows
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get all project tiles
+        const projectTiles = document.querySelectorAll('.project-tile');
+
+        projectTiles.forEach(tile => {
+            const slideshow = tile.querySelector('.project-slideshow');
+            const slides = tile.querySelectorAll('.project-slide');
+            const dots = tile.querySelectorAll('.project-dot');
+            const prevBtn = tile.querySelector('.project-nav-btn.prev');
+            const nextBtn = tile.querySelector('.project-nav-btn.next');
+
+            let currentSlide = 0;
+
+            // Initialize slides
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                currentSlide = (n + slides.length) % slides.length;
+
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            // Navigation functions
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // Dot click handlers
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
             });
-        });
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
+
+            // Button event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Auto-advance slideshow
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            // Pause on hover
+            slideshow.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
             });
+
+            slideshow.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+
+            // Initialize first slide
+            showSlide(0);
         });
     });
 </script>
