@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerstetter's Land Clearing & Excavation</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .nav-button {
             font-weight: 600;
@@ -111,6 +112,58 @@
             object-fit: contain;
         }
 
+        .service-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(234, 88, 12, 0.2);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #ea580c;
+            margin-bottom: 15px;
+        }
+
+        .service-divider {
+            height: 3px;
+            background: linear-gradient(to right, #ea580c, #c2410c);
+            width: 60px;
+            margin: 10px 0;
+        }
+
+        .service-description {
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .equipment-section {
+            background-color: #1a0f00;
+            border-top: 3px solid #ea580c;
+            border-bottom: 3px solid #ea580c;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -165,8 +218,121 @@
 
 <!-- Services Page Content -->
 <main class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold text-center mb-8">Our Services</h1>
-    <!-- Add services-specific content here -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold mb-4 text-orange-600">Our Services</h1>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">Professional land management and excavation solutions for residential, commercial, and agricultural properties</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <!-- Land Clearing -->
+        <div class="service-card">
+            <div class="service-image" style="background-image: url('assets/service-clearing.jpg');"></div>
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-tractor"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Land Clearing</h3>
+                <div class="service-divider"></div>
+                <div class="service-description">
+                    <p>Complete vegetation removal including trees, brush, and undergrowth to prepare sites for construction or agriculture. We handle projects of any size with precision and efficiency.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Field Line Trimming -->
+        <div class="service-card">
+            <div class="service-image" style="background-image: url('assets/service-trimming.jpg');"></div>
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Field Line Trimming</h3>
+                <div class="service-divider"></div>
+                <div class="service-description">
+                    <p>Professional trimming of overhanging branches and vegetation along field lines, fences, and property boundaries. Maintain clear sight lines and prevent vegetation damage to structures.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stump Removal & Grinding -->
+        <div class="service-card">
+            <div class="service-image" style="background-image: url('assets/service-stump.jpg');"></div>
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Stump Removal & Grinding</h3>
+                <div class="service-divider"></div>
+                <div class="service-description">
+                    <p>Complete stump elimination services including grinding and full removal. We transform unsightly stumps into wood chips or completely remove them to make way for new landscaping.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brush Hogging -->
+        <div class="service-card">
+            <div class="service-image" style="background-image: url('assets/service-brushhog.jpg');"></div>
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Brush Hogging</h3>
+                <div class="service-divider"></div>
+                <div class="service-description">
+                    <p>Heavy-duty mowing and clearing of dense brush, overgrown fields, and rough terrain. Ideal for maintaining large properties, pastures, and reclaiming neglected land.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Driveways -->
+        <div class="service-card">
+            <div class="service-image" style="background-image: url('assets/service-driveway.jpg');"></div>
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Stone Driveways</h3>
+                <div class="service-divider"></div>
+                <div class="service-description">
+                    <p>Professional installation and maintenance of durable driveways. We handle grading, base preparation, stone or millings selection, and installation for long-lasting, attractive driveways.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Excavation -->
+        <div class="service-card">
+            <div class="service-image" style="background-image: url('assets/service-excavating.jpg');"></div>
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-digging"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Excavation</h3>
+                <div class="service-divider"></div>
+                <div class="service-description">
+                    <p>Comprehensive excavation services for foundations, basements, trenches, and site preparation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="bg-orange-50 rounded-xl p-8 mb-16 border-l-4 border-orange-500">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 text-center">Service Area</h2>
+            <div class="flex justify-center">
+                <div class="text-center">
+                    <p class="text-lg mb-6 max-w-2x1 mx-auto">We proudly serve Franklin County and surrounding areas in Pennsylvania, including:</p>
+                    <ul class="grid grid-cols-2 gap-2 justify-items-center">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Path Valley</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Chambersburg</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Shippensburg</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Waynesboro</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Greencastle</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-orange-600 mr-2"></i> Fayetteville</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer class="bg-black text-white py-8">
